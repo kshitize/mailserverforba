@@ -3,8 +3,10 @@ const router = new express.Router();
 const nodemailer = require("nodemailer");
 
 router.post("/register",(req,res)=>{
-    email=["kshitize@aai.aero","explorerkd@gmail.com","kshitizedimri@gmail.com"];
-
+    // email=["kshitize@aai.aero","explorerkd@gmail.com","kshitizedimri@gmail.com"];
+    // console.log(req.body);
+    const {mail} =req.body;
+    console.log(mail);
     try {
         const transporter = nodemailer.createTransport({
             service:"gmail",
@@ -16,7 +18,7 @@ router.post("/register",(req,res)=>{
 
         const mailOptions = {
             from:"kshitizedimri@gmail.com",
-            to:email,
+            to:mail,
             subject:"Random BA Test",
             html:'<h1>You have been selected for BA Test</h1>'
         }
